@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./a.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div id="mainxxx">
+
+        </div>
+    </main>
+    <footer></footer>
+    <script>
+        var kes = {
+            '0': ['q','w','e','r','t','y','u','i','o','p'],
+            '1': ['a','s','d','f','g','h','j','k','l'],
+            '2': ['z','x','c','v','b','n','m'],
+        }
+
+        var hash = {
+            'q':'hrrp://qq.com',
+            'w':'weibo.com'
+        }
+
+        for (var i=0;i<Object.keys(kes).length;i++){
+            divadd = document.createElement('div')
+            mainxxx.appendChild(divadd)
+            for (var x=0;x<kes[i].length;x++){
+                kbdadd = document.createElement('kbd')
+                kbdadd.innerText=kes[i][x]
+                divadd.appendChild(kbdadd)
+            }
+        }
+    </script>
+</body>
+</html>
