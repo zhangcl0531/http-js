@@ -12,9 +12,19 @@ kbd {
     padding: 20px;
     text-transform: uppercase;
     margin: 10px;
-    
+    position:relative;
 }
 
+kbd > button {
+  position:absolute;
+  left:0;
+  top:0;
+  display:none;
+}
+
+kbd:hover > button{
+  display: inline-block
+}
 main {
     text-align: center
 }

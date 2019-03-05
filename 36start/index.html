@@ -20,10 +20,14 @@
             '1': ['a','s','d','f','g','h','j','k','l'],
             '2': ['z','x','c','v','b','n','m'],
         }
-
         var hash = {
-            'q':'hrrp://qq.com',
+            'q':'qq.com',
             'w':'weibo.com'
+        }
+        // 判断浏览器localstorage里面是否有历史数据，如果有就覆盖
+        var localStoragehash = JSON.parse(localStorage.getItem('newhash')||'')
+        if (localStoragehash) {
+            hash = localStoragehash
         }
 
         for (var i=0;i<Object.keys(kes).length;i++){
@@ -32,9 +36,32 @@
             for (var x=0;x<kes[i].length;x++){
                 kbdadd = document.createElement('kbd')
                 kbdadd.innerText=kes[i][x]
+                
+                buttonadd = document.createElement('button')
+                buttonadd.innerText='E'
+                buttonadd.id = kes[i][x]
+                buttonadd.onclick = function(xxx){
+                    console.log(xxx.target.id)
+                    var oldkey = xxx.target.id
+                    newkey = prompt('请输入网址')
+                    hash[oldkey] = newkey
+                    // 如果hash有变化，就存在localstorage里面
+                    localStorage.setItem('newhash',JSON.stringify(hash))
+
+                }
+                kbdadd.appendChild(buttonadd)
                 divadd.appendChild(kbdadd)
             }
         }
+      //监听键盘事件
+      document.onkeypress = function(input){
+        console.log(input['key'])
+        var key = input['key']
+        var website = hash[key]
+        console.log(website)
+        //location.href = 'http://'+ website
+        window.open('http://'+ website,'_blank')
+      }
     </script>
 </body>
 </html>
