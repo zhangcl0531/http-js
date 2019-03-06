@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./a.css">
     <title>Document</title>
 </head>
+
 <body>
     <main>
         <div id="mainxxx">
@@ -16,52 +18,55 @@
     <footer></footer>
     <script>
         var kes = {
-            '0': ['q','w','e','r','t','y','u','i','o','p'],
-            '1': ['a','s','d','f','g','h','j','k','l'],
-            '2': ['z','x','c','v','b','n','m'],
+            '0': ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            '1': ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            '2': ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
         }
         var hash = {
-            'q':'qq.com',
-            'w':'weibo.com'
+            'q': 'www.qq.com',
+            'w': 'weibo.com'
         }
         // 判断浏览器localstorage里面是否有历史数据，如果有就覆盖
-        var localStoragehash = JSON.parse(localStorage.getItem('newhash')||'')
+        var localStoragehash = JSON.parse(localStorage.getItem('newhash') || 'null')
         if (localStoragehash) {
             hash = localStoragehash
         }
-
-        for (var i=0;i<Object.keys(kes).length;i++){
+        for (var i = 0; i < Object.keys(kes).length; i++) {
             divadd = document.createElement('div')
             mainxxx.appendChild(divadd)
-            for (var x=0;x<kes[i].length;x++){
+            for (var x = 0; x < kes[i].length; x++) {
                 kbdadd = document.createElement('kbd')
-                kbdadd.innerText=kes[i][x]
-                
+                kbdadd.innerText = kes[i][x]
+
                 buttonadd = document.createElement('button')
-                buttonadd.innerText='E'
+                buttonadd.innerText = 'E'
                 buttonadd.id = kes[i][x]
-                buttonadd.onclick = function(xxx){
+                buttonadd.onclick = function (xxx) {
                     console.log(xxx.target.id)
                     var oldkey = xxx.target.id
                     newkey = prompt('请输入网址')
                     hash[oldkey] = newkey
                     // 如果hash有变化，就存在localstorage里面
-                    localStorage.setItem('newhash',JSON.stringify(hash))
-
+                    localStorage.setItem('newhash', JSON.stringify(hash))
                 }
+
+                img = document.createElement('img')
+                img.src = 'http://'+ hash[kes[i][x]] + '/favicon.ico'
                 kbdadd.appendChild(buttonadd)
+                kbdadd.appendChild(img)
                 divadd.appendChild(kbdadd)
             }
         }
-      //监听键盘事件
-      document.onkeypress = function(input){
-        console.log(input['key'])
-        var key = input['key']
-        var website = hash[key]
-        console.log(website)
-        //location.href = 'http://'+ website
-        window.open('http://'+ website,'_blank')
-      }
+        //监听键盘事件
+        document.onkeypress = function (input) {
+            console.log(input['key'])
+            var key = input['key']
+            var website = hash[key]
+            console.log(website)
+            //location.href = 'http://'+ website
+            window.open('http://' + website, '_blank')
+        }
     </script>
 </body>
+
 </html>
