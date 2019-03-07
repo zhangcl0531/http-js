@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./a.css">
+    <script src="http://at.alicdn.com/t/font_1076511_yv2kqloensi.js"></script>
     <title>Document</title>
 </head>
 
@@ -24,7 +25,10 @@
         }
         var hash = {
             'q': 'www.qq.com',
-            'w': 'weibo.com'
+            'w': 'weibo.com',
+            'b': 'baidu.com',
+            't': 'taobao.com',
+            'j': 'www.jd.com'
         }
         // 判断浏览器localstorage里面是否有历史数据，如果有就覆盖
         var localStoragehash = JSON.parse(localStorage.getItem('newhash') || 'null')
@@ -37,21 +41,26 @@
             for (var x = 0; x < kes[i].length; x++) {
                 kbdadd = document.createElement('kbd')
                 kbdadd.innerText = kes[i][x]
-
                 buttonadd = document.createElement('button')
                 buttonadd.innerText = 'E'
                 buttonadd.id = kes[i][x]
+                img = document.createElement('img')
+                img.src = 'http://' + hash[kes[i][x]] + '/favicon.ico'
+
+
                 buttonadd.onclick = function (xxx) {
-                    console.log(xxx.target.id)
+                    console.log(xxx.target)
                     var oldkey = xxx.target.id
                     newkey = prompt('请输入网址')
-                    hash[oldkey] = newkey
+                    hash[oldkey] = newkey // 替换存在hash里面的网址
+                    img2 = xxx.target.nextSibling //上一个兄弟元素
+                    console.log(img2)
+                    img2.src = 'http://' + newkey + '/favicon.ico' //替换img
                     // 如果hash有变化，就存在localstorage里面
                     localStorage.setItem('newhash', JSON.stringify(hash))
                 }
 
-                img = document.createElement('img')
-                img.src = 'http://'+ hash[kes[i][x]] + '/favicon.ico'
+
                 kbdadd.appendChild(buttonadd)
                 kbdadd.appendChild(img)
                 divadd.appendChild(kbdadd)
