@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>画圆 画线 橡皮擦 pc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #xxx {
+            background: green;
+            display: black;
+        }
+
+        button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="xxx" width=300 height=300></canvas>
+    <button id=eraser>橡皮擦</button>
+    <script>
+        var yyy = document.getElementById('xxx')
+        var context = yyy.getContext('2d')
+        var using = false
+        context.strokeStyle = "#0000ff" // 设置颜色
+
+        function resize() {
+            var pageWidth = document.documentElement.clientWidth // 获取页面宽
+            var pageHeight = document.documentElement.clientHeight // 获取页面高
+            //设置全屏
+            yyy.width = pageWidth
+            yyy.height = pageHeight
+        }
+
+        resize()
+
+        //动态设置全屏
+        window.onresize = function () {
+            resize()
+        }
+
+
+        //画圈
+        function drawCircle(x, y, radius) {
+            context.beginPath()
+            context.arc(x, y, radius, 0, Math.PI * 2)
+            context.fillStyle = "red"; //设置填充颜色
+            context.fill()
+        }
+
+        //画线
+        function drawLine(x1, y1, x2, y2) {
+            context.beginPath()
+            context.lineWidth = 5 //设置宽度
+            context.strokeStyle = "#0000ff" // 设置线条颜色
+            context.moveTo(x1, y1)
+            context.lineTo(x2, y2)
+            context.closePath()
+            context.stroke()
+        }
+
+        var lastPoint = {
+            x: null,
+            y: null
+        } //设置上一个点
+
+        // 按下鼠标
+        yyy.onmousedown = function (a) {
+            using = true
+            var x = a.clientX
+            var y = a.clientY
+
+            if (eraseron) {
+                context.clearRect(x, y, 10, 10)
+            } else {
+                drawCircle(x, y, 2)
+                lastPoint = {
+                    x: x,
+                    y: y
+                }
+            }
+
+        }
+
+        // 移动鼠标
+        yyy.onmousemove = function (a) {
+            //   console.log(y)
+            var x = a.clientX
+            var y = a.clientY
+            if (using) {
+                if (eraseron) {
+                    context.clearRect(x, y, 10, 10)
+                } else {
+                    //drawCircle(x,y,1)
+                    var newPoint = {
+                        x: x,
+                        y: y
+                    } //设置一个新的点
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+        }
+
+
+
+
+        //松开鼠标
+        yyy.onmouseup = function (z) {
+            console.log(1)
+            using = false
+        }
+
+        var eraseron = false
+        eraser.onclick = function () {
+            eraseron = !eraseron
+            if (eraseron) {
+                eraser.textContent = "画笔"
+            } else {
+                eraser.textContent = "橡皮擦"
+            }
+        }
+    </script>
+</body>
+
+</html>
