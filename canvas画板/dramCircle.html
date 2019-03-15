@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画圆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #xxx {
+            background: green;
+            display: black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="xxx" width=300 height=300></canvas>
+
+
+
+    <script>
+        var yyy = document.getElementById('xxx')
+        var context = yyy.getContext('2d')
+        var painting = false
+
+        function drawCircle(x, y, radius) {
+            context.beginPath()
+            context.arc(x, y, radius, 0, Math.PI * 2)
+            context.fill()
+        }
+
+        // 按下鼠标
+        yyy.onmousedown = function (a) {
+            painting = true
+            var x = a.clientX
+            var y = a.clientY
+            drawCircle(x, y, 1)
+
+        }
+
+        // 移动鼠标
+        yyy.onmousemove = function (a) {
+            //   console.log(y)
+            if (painting) {
+                var x = a.clientX
+                var y = a.clientY
+                drawCircle(x, y, 1)
+            }
+        }
+
+
+
+
+        //松开鼠标
+        yyy.onmouseup = function (z) {
+            console.log(1)
+            painting = false
+        }
+    </script>
+</body>
+
+
+</html>
