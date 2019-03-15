@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>画线</title>
+</head>
+
+<body>
+    <canvas id=xxx width=300 height=300></canvas>
+    <script>
+        var xxx = document.getElementById('xxx')
+        var context = xxx.getContext('2d')
+        context.beginPath()
+        context.lineWidth = 5
+        context.moveTo(0, 0)
+        context.lineTo(200, 0)
+        context.closePath()
+        context.stroke()
+    </script>
+</body>
+
+</html>
