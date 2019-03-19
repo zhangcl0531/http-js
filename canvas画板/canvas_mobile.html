@@ -14,6 +14,7 @@
         body {
             overflow: hidden;
         }
+
         ul,
         ol {
             list-style: none;
@@ -96,7 +97,7 @@
             transform: scale(1.4)
         }
     </style>
-    <script src="https://at.alicdn.com/t/font_1091610_haf11jv4trm.js"></script>
+    <script src="https://at.alicdn.com/t/font_1091610_n1sh1tt3inr.js"></script>
 </head>
 
 <body>
@@ -110,26 +111,32 @@
         <svg id=eraser class="icon" aria-hidden="true">
             <use xlink:href="#icon-xiangpica"></use>
         </svg>
+        <svg id=lajitong class="icon" aria-hidden="true">
+            <use xlink:href="#icon-lajitong"></use>
+        </svg>
+        <svg id=down class="icon" aria-hidden="true">
+            <use xlink:href="#icon-down"></use>
+        </svg>
     </div>
 
     <ol id="colors" class="colors active">
-        <li  class="red">
-            <svg  id="red" class="icon" aria-hidden="true">
+        <li class="red">
+            <svg id="red" class="icon" aria-hidden="true">
                 <use xlink:href="#icon-ico1"></use>
             </svg>
         </li>
-        <li  class="green">
-            <svg  id="green" class="icon" aria-hidden="true">
+        <li class="green">
+            <svg id="green" class="icon" aria-hidden="true">
                 <use xlink:href="#icon-ico1"></use>
             </svg>
         </li>
-        <li  class="blue">
-            <svg  id="blue" class="icon" aria-hidden="true">
+        <li class="blue">
+            <svg id="blue" class="icon" aria-hidden="true">
                 <use xlink:href="#icon-ico1"></use>
             </svg>
         </li>
-        <li  class="black">
-            <svg  id="black" class="icon active" aria-hidden="true">
+        <li class="black">
+            <svg id="black" class="icon active" aria-hidden="true">
                 <use xlink:href="#icon-ico1"></use>
             </svg>
         </li>
@@ -279,7 +286,6 @@
 
         }
 
-
         var eraseron = false
         context.strokeStyle = "black"
         eraser.onclick = function () {
@@ -294,8 +300,10 @@
             brush.classList.toggle('active')
             colors.classList.toggle('active')
         }
-
-        red.onclick = function(){
+        lajitong.onclick = function () {
+            context.clearRect(0, 0, yyy.width, yyy.height)
+        }
+        red.onclick = function () {
             context.strokeStyle = "red"
             blue.classList.remove('active')
             red.classList.add('active')
@@ -303,7 +311,7 @@
             black.classList.remove('active')
         }
 
-        green.onclick = function(){
+        green.onclick = function () {
             context.strokeStyle = "green"
             blue.classList.remove('active')
             red.classList.remove('active')
@@ -311,7 +319,7 @@
             black.classList.remove('active')
         }
 
-        blue.onclick = function(){
+        blue.onclick = function () {
             context.strokeStyle = "blue"
             blue.classList.add('active')
             red.classList.remove('active')
@@ -319,7 +327,7 @@
             black.classList.remove('active')
         }
 
-        black.onclick = function(){
+        black.onclick = function () {
             context.strokeStyle = "black"
             bule.classList.remove('active')
             red.classList.remove('active')
