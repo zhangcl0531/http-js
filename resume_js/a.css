@@ -1,0 +1,359 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+a {
+    text-decoration: none;
+    color: white
+}
+
+ul li,
+ol {
+    list-style: none
+}
+
+body {
+    background: #efefef;
+    ;
+    color: black
+}
+
+.topNavBar {
+    margin-top: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 940px;
+    z-index: 1;
+}
+
+
+.topNavBar nav ul li {
+    float: left;
+}
+
+.topNavBar nav ul li a {
+    display: block;
+    margin: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.5s;
+}
+
+.topNavBar nav ul li a:hover {
+    border-bottom: 2px solid #e6686a;
+    
+}
+
+.topNavBar .menu {
+    font-size: 12px;
+    font-weight: bold
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.logo {
+    float: left;
+    font-size: 24px;
+    margin: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.logo .rs {
+    color: red;
+}
+
+.menu {
+    float: right;
+    padding-top: 10px;
+    margin-right: 20px;
+
+}
+
+.banner {
+    background-image: url(./img/rs-cover.jpg);
+    height: 515px;
+    background-position: center center;
+    background-size: cover;
+
+}
+
+.banner .mask {
+    height: 515px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.usercard {
+    background-color: #ffffff;
+    color: black;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0 auto;
+    margin-top: -340px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.text .welcome {
+    background-color: #e6686a;
+    color: white;
+    padding: 4px 16px;
+
+}
+
+.sj {
+    border: 12px solid #e6686a;
+    height: 0;
+    width: 0;
+    border-bottom: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-left: 12px solid #e6686a;
+    border-top: 0px solid transparent;
+    margin-left: 5px;
+}
+
+
+.picture {
+    float: left;
+}
+
+.text {
+    float: left;
+    margin-left: 65px;
+    margin-top: 4px;
+    width: 470px;
+}
+
+
+
+.userinfobox {
+    padding: 50px;
+}
+
+.text h1 {
+    padding-top: 10px;
+}
+
+.text p {
+    margin-bottom: 15px;
+}
+
+.text dl {
+    margin-top: 20px;
+}
+
+hr {
+    color: #9da0a7
+}
+
+.text dt,
+.text dd {
+    float: left;
+    padding-bottom: 30px;
+}
+
+.text dt {
+    width: 30%;
+    font-weight: bold
+}
+
+.text dd {
+    width: 70%;
+    color: #9da0a7
+}
+
+
+.media {
+    background-color: #E6686A;
+    text-align: center
+}
+
+
+.media a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    line-height: 38px;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.media a:hover {
+    background: #CF5D5F
+}
+
+
+.downloadbutton {
+    text-align: center
+}
+
+.downloadresume {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 21px 55px;
+    border: 1px solid #cdcfd1;
+    background: #efefef;
+    display: inline-block;
+    border-radius: 2px;
+    color: #3d4451;
+    font-weight: bold;
+    margin: 32px 0;
+    transition: box-shadow 0.2s
+}
+
+main p a:hover {
+    box-shadow: 0px 4px 13px 0px rgba(0, 0, 0, 0.2);
+}
+
+.userinfo {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+.skills {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+.skills h2 {
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.skills ol {
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    padding: 42px 50px 10px;
+    margin-top: 30px;
+}
+
+.skills ol>li {
+    float: left;
+    width: 48%;
+    padding-right: 10px;
+    box-sizing: border-box;
+    /* box-sizing: border-box; 把padding 或者 border 计算到width内 */
+}
+
+
+.skills ol>li:nth-child(even) {
+    float: right;
+}
+
+
+.progressBar {
+    height: 5px;
+    background: #FAE1E1;
+    border-radius: 2px;
+    margin: 4px 0 40px;
+}
+
+.progressBar .progress {
+    height: 100%;
+    background: #E6686A;
+    border-radius: 2px;
+}
+
+.portfolio {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+}
+
+
+.portfolio h2 {
+    text-align: center;
+    color: #3d4451;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+
+.portfolio {
+    text-align: center
+}
+
+.portfolio nav {
+    text-align: center;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.portfolio nav ol {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.portfolio nav ol li {
+    float: left;
+    cursor: pointer;
+}
+
+.portfolio nav ol li:nth-child(2) {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.portfolio nav .bar {
+    height: 5px;
+    background: white;
+    border-radius: 2px;
+    margin: 4px 0 40px;
+}
+
+
+.portfolio nav .bar .bar-inner {
+    height: 100%;
+    background: #E6686A;
+    width: 20%;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+
+.portfolio nav .bar.state-1 .bar-inner {
+    width: 20%;
+    margin-left: 0;
+}
+
+.portfolio nav .bar.state-2 .bar-inner {
+    width: 25%;
+    margin-left: 25%;
+}
+
+.portfolio nav .bar.state-3 .bar-inner {
+    width: 40%;
+    margin-left: 60%;
+}
+
+.portfolio .works {
+    position: relative;
+}
+
+.portfolio .works .big,
+.portfolio .works .small {
+    position: absolute;
+}

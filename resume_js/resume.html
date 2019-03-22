@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="a.css">
+    <script src="http://at.alicdn.com/t/font_1054675_krzsnyzfojl.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            font-size: 25px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topNavBar clearfix">
+        <a src="#" alt="logo" class="logo">
+            <span class="rs">RS</span>
+            <span class="card">card</span>
+        </a>
+        <nav class="menu">
+            <ul class="clearfix">
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SKILLS</a></li>
+                <li><a href="#">EXPERIENCE</a></li>
+                <li><a href="#">PRICING</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">CALENDAR</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="#">OTHER</a></li>
+                <li><a href="#">ALL DEMOS</a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
+    <main>
+        <div class="usercard">
+            <div class="userinfobox clearfix">
+                <div class="picture">
+                    <img src="./img/avatar.jpg" alt="头像">
+                </div>
+                <div class="text">
+                    <span class="welcome">Hello</span>
+                    <div class="sj"></div>
+                    <h1>张XX</h1>
+                    <p>前端开发工程师</p>
+                    <hr>
+                    <!-- 分割线 -->
+                    <dl>
+                        <dt>年龄</dt>
+                        <dd>24</dd>
+                        <dt>所在城市</dt>
+                        <dd>上海</dd>
+                        <dt>邮箱</dt>
+                        <dd>zclphone19940531@163.com</dd>
+                        <dt>手机</dt>
+                        <dd>158820xxxxx</dd>
+                    </dl>
+                    <!-- dl dt dd 列表表格标签 -->
+                </div>
+            </div>
+
+            <div class="media">
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-QQ"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixin"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-twitter"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <p class="downloadbutton">
+            <a class="downloadresume" href="#">下载 PDF 简历</a>
+        </p>
+
+
+        <p class="userinfo">
+            张XX，前端菜鸟。<br>
+            <!-- br 换行 -->
+            技能：前端开发
+        </p>
+    </main>
+
+    <section class="skills">
+        <h2>技能</h2>
+        <ol class="clearfix">
+            <li>
+                <h3>
+                    HTML 5 &amp; CSS 3
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 10%;"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    JavaScript
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 20%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    jQuery
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 30%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    Vue.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 40%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    React.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 50%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    Node.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width: 60%"></div>
+                </div>
+            </li>
+        </ol>
+    </section>
+    <section class="portfolio">
+        <h2>作品集</h2>
+        <nav>
+            <ol class="clearfix">
+                <li id="portfolio1">所有</li>
+                <li id="portfolio2">框架</li>
+                <li id="portfolio3">原生JS&amp;CSS</li>
+            </ol>
+            <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+            </div>
+        </nav>
+        <div class="works" style="height: 597px;">
+            <div class="big" style="top: 0; left: 0;">
+                <img src="./img/1.jpg" alt="作品1">
+            </div>
+            <div class="small" style="top: 0; left: 645px;">
+                <img src="./img/2.jpg" alt="作品2">
+            </div>
+            <div class="small" style="top: 312px; left: 645px;">
+                <img src="./img/3.jpg" alt="作品3">
+            </div>
+        </div>
+    </section>
+    <script>
+        portfolio1.onclick = function () {
+            portfolioBar.className = 'bar state-1'
+        }
+        portfolio2.onclick = function () {
+            portfolioBar.className = 'bar state-2'
+        }
+        portfolio3.onclick = function () {
+            portfolioBar.className = 'bar state-3'
+        }
+    </script>
+</body>
+
+</html>
