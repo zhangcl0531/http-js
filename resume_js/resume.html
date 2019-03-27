@@ -34,8 +34,6 @@
             justify-content: center;
             align-items: center;
         }
-
-
         .site-welcome.active {
             display: flex;
         }
@@ -46,7 +44,7 @@
     <div id="sitewelcome" class="site-welcome active">
         <div class="loading"></div>
     </div>
-    <div class="topNavBar clearfix">
+    <div id="topNavBar" class="topNavBar clearfix">
         <a src="#" alt="logo" class="logo">
             <span class="rs">RS</span>
             <span class="card">card</span>
@@ -54,7 +52,13 @@
         <nav class="menu">
             <ul class="clearfix">
                 <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SKILLS</a></li>
+                <li><a href="#">SKILLS</a>
+                    <ul class="submune">
+                        <li><a href="">SKILLS1</a></li>
+                        <li><a href="">SKILLS2</a></li>
+                        <li><a href="">SKILLS3</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">EXPERIENCE</a></li>
                 <li><a href="#">PRICING</a></li>
                 <li><a href="#">BLOG</a></li>
@@ -228,8 +232,17 @@
     <script>
         setTimeout(function(){
             sitewelcome.classList.remove('active')
-        },3000)
+        },1000)
         
+        // 添加滚动鼠标可变化的topNavBar
+        window.onscroll = function(xxx){
+            if(window.scrollY > 0){
+                topNavBar.classList.add('sticky')
+            }else{
+                topNavBar.classList.remove('sticky')
+            }
+        }
+
     </script>
 </body>
 

@@ -15,22 +15,22 @@ ol {
 
 body {
     background: #efefef;
-    ;
     color: black
 }
 
 .topNavBar {
-    margin-top: 10px;
     position: fixed;
+    padding: 10px 0;
     top: 0;
     left: 0;
     right: 0;
     min-width: 940px;
     z-index: 1;
+    transition:  all 1s;
 }
 
 
-.topNavBar nav ul li {
+.topNavBar > nav > ul > li {
     float: left;
 }
 
@@ -41,12 +41,37 @@ body {
     padding-top: 5px;
     border-bottom: 2px solid transparent;
     transition: all 0.5s;
+    position: relative;
 }
 
-.topNavBar nav ul li a:hover {
+/* .topNavBar nav ul li a:hover {
     border-bottom: 2px solid #e6686a;
     
+} */
+
+.topNavBar nav ul li a:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 100%;
+    background: #e6686a;
+    height: 3px;
+    border-radius: 10px;
+    animation: menuSlide 1s;
 }
+
+/*添加向右滑动效果*/
+@keyframes menuSlide {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+
 
 .topNavBar .menu {
     font-size: 12px;
@@ -63,8 +88,8 @@ body {
     float: left;
     font-size: 24px;
     margin: 10px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    /* padding-bottom: 5px;
+    padding-top: 5px; */
 }
 
 .logo .rs {
@@ -73,7 +98,7 @@ body {
 
 .menu {
     float: right;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     margin-right: 20px;
 
 }
@@ -188,6 +213,7 @@ hr {
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    transition:  all 0.5s;
 }
 
 .media a:hover {
@@ -358,3 +384,17 @@ main p a:hover {
     position: absolute;
 }
 
+.sticky {
+    background: white;
+    padding: 2px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    opacity:0.9;
+}
+
+.sticky a {
+    color: #3d4451
+}
+
+.submune {
+    
+}
