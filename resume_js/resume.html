@@ -52,7 +52,7 @@
         <nav class="menu">
             <ul class="clearfix">
                 <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SKILLS</a>
+                <li class="menuTigger"><a href="#">SKILLS</a>
                     <ul class="submune">
                         <li><a href="">SKILLS1</a></li>
                         <li><a href="">SKILLS2</a></li>
@@ -62,7 +62,13 @@
                 <li><a href="#">EXPERIENCE</a></li>
                 <li><a href="#">PRICING</a></li>
                 <li><a href="#">BLOG</a></li>
-                <li><a href="#">CALENDAR</a></li>
+                <li class="menuTigger"><a href="#">CALENDAR</a>
+                    <ul class="submune">
+                        <li><a href="">CALENDAR 1</a></li>
+                        <li><a href="">CALENDAR 2</a></li>
+                        <li><a href="">CALENDAR 3</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">CONTACT</a></li>
                 <li><a href="#">OTHER</a></li>
                 <li><a href="#">ALL DEMOS</a></li>
@@ -243,6 +249,28 @@
             }
         }
 
+        //添加二级菜单
+        let liTags = document.getElementsByClassName('menuTigger')
+        console.log(liTags)
+        for(let i=0; i<liTags.length; i++){
+            liTags[i].onmouseenter = function(x){
+                console.log('mouseenter')
+                console.log(x.currentTarget)
+                let li = x.currentTarget
+                let brother = li.getElementsByTagName('ul')[0]
+                console.log(brother)
+                brother.classList.add('active')
+                
+                console.log(brother)
+            }
+            liTags[i].onmouseleave = function(x){
+                console.log('mouseleave')
+                let li = x.currentTarget
+                let brother = li.getElementsByTagName('ul')[0]
+                console.log(brother)
+                brother.classList.remove('active')
+            }
+        }
     </script>
 </body>
 

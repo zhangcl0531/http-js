@@ -32,9 +32,10 @@ body {
 
 .topNavBar > nav > ul > li {
     float: left;
+    position: relative;
 }
 
-.topNavBar nav ul li a {
+.topNavBar  nav  ul  li  a {
     display: block;
     margin: 10px;
     padding-bottom: 5px;
@@ -384,6 +385,7 @@ main p a:hover {
     position: absolute;
 }
 
+/* 添加可变化的topbar  css */
 .sticky {
     background: white;
     padding: 2px 0;
@@ -395,6 +397,27 @@ main p a:hover {
     color: #3d4451
 }
 
+
+/* 添加二级菜单css */
 .submune {
-    
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background: white; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    opacity:0.9; 
+}
+
+.submune > li {
+    white-space: nowrap;
+    padding: 0 15px;
+}
+
+.submune.active {
+    display: block;
+}
+
+.submune.active a {
+    color: black;
 }
