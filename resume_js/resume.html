@@ -51,27 +51,27 @@
         </a>
         <nav class="menu">
             <ul class="clearfix">
-                <li><a href="#">ABOUT</a></li>
-                <li class="menuTigger"><a href="#">SKILLS</a>
+                <li><a href="#ABOUT">ABOUT</a></li>
+                <li class="menuTigger"><a href="#SKILLS">SKILLS</a>
                     <ul class="submune">
                         <li><a href="">SKILLS1</a></li>
                         <li><a href="">SKILLS2</a></li>
                         <li><a href="">SKILLS3</a></li>
                     </ul>
                 </li>
-                <li><a href="#">EXPERIENCE</a></li>
-                <li><a href="#">PRICING</a></li>
-                <li><a href="#">BLOG</a></li>
-                <li class="menuTigger"><a href="#">CALENDAR</a>
+                <li><a href="#EXPERIENCE">EXPERIENCE</a></li>
+                <li><a href="#PRICING">PRICING</a></li>
+                <li><a href="#BLOG">BLOG</a></li>
+                <li class="menuTigger"><a href="#CALENDAR">CALENDAR</a>
                     <ul class="submune">
                         <li><a href="">CALENDAR 1</a></li>
                         <li><a href="">CALENDAR 2</a></li>
                         <li><a href="">CALENDAR 3</a></li>
                     </ul>
                 </li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">OTHER</a></li>
-                <li><a href="#">ALL DEMOS</a></li>
+                <li><a href="#CONTACT">CONTACT</a></li>
+                <li><a href="#OTHER">OTHER</a></li>
+                <li><a href="#ALLDEMOS">ALL DEMOS</a></li>
             </ul>
         </nav>
 
@@ -80,7 +80,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="usercard">
+        <div id="ABOUT" class="usercard">
             <div class="userinfobox clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg" alt="头像">
@@ -147,7 +147,7 @@
         </p>
     </main>
 
-    <section class="skills">
+    <section id="SKILLS" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -200,7 +200,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section id="ALLDEMOS" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -251,24 +251,47 @@
 
         //添加二级菜单
         let liTags = document.getElementsByClassName('menuTigger')
-        console.log(liTags)
+        // console.log(liTags)
         for(let i=0; i<liTags.length; i++){
             liTags[i].onmouseenter = function(x){
-                console.log('mouseenter')
-                console.log(x.currentTarget)
+                // console.log('mouseenter')
+                // console.log(x.currentTarget)
                 let li = x.currentTarget
                 let brother = li.getElementsByTagName('ul')[0]
-                console.log(brother)
+                // console.log(brother)
                 brother.classList.add('active')
                 
                 console.log(brother)
             }
             liTags[i].onmouseleave = function(x){
-                console.log('mouseleave')
+                // console.log('mouseleave')
                 let li = x.currentTarget
                 let brother = li.getElementsByTagName('ul')[0]
-                console.log(brother)
+                // console.log(brother)
                 brother.classList.remove('active')
+            }
+        }
+
+        //点击链接跳转到指定标签
+        let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+        console.log(aTags)
+        for(let i=0;i<aTags.length;i++){
+            aTags[i].onclick = function(x){
+                x.preventDefault() //阻止默认事件
+                console.log('a clicked')
+                console.log(x)
+                console.log(x.currentTarget)
+                let a = x.currentTarget
+                
+                // a.href 是被浏览器处理过的完整url连接，a.getAttribute('href')只是用户写入的#内容
+                console.log(a.getAttribute('href'))
+
+                let href = a.getAttribute('href') // #skills
+                let element = document.querySelector(href)
+                let top = element.offsetTop
+                window.scrollTo(0,top - 80)
+                
+
             }
         }
     </script>
