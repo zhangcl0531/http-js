@@ -41,6 +41,7 @@
 </head>
 
 <body>
+    <!-- 添加加载动画 -->
     <div id="sitewelcome" class="site-welcome active">
         <div class="loading"></div>
     </div>
@@ -236,6 +237,7 @@
         }
     </script>
     <script>
+        //增加加载动画效果
         setTimeout(function(){
             sitewelcome.classList.remove('active')
         },1000)
@@ -281,17 +283,32 @@
                 console.log('a clicked')
                 console.log(x)
                 console.log(x.currentTarget)
-                let a = x.currentTarget
+                // let a = x.currentTarget
                 
                 // a.href 是被浏览器处理过的完整url连接，a.getAttribute('href')只是用户写入的#内容
-                console.log(a.getAttribute('href'))
+                // console.log(a.getAttribute('href'))
 
-                let href = a.getAttribute('href') // #skills
-                let element = document.querySelector(href)
-                let top = element.offsetTop
-                window.scrollTo(0,top - 80)
+                // let href = a.getAttribute('href') // #skills
+                // let element = document.querySelector(href)
+                // let top = element.offsetTop
+                let top = document.querySelector(x.currentTarget.getAttribute('href')).offsetTop
+                // window.scrollTo(0,top - 80)
+
+                //缓慢滚动到指定位置
+                let n = 25 // 一共动多少次
+                let duration = 500 / n //多少时间动一次，0.5秒移动到指定位置
+                let currenTop = window.scrollY //当前高度
+                let targetTop = top - 80 // 要去哪里
+                let distance = (targetTop - currenTop)/ n //每次滚动的距离
+                let i = 0
+                var id = setInterval(function(){
+                    i = i + 1
+                    window.scrollTo(0, currenTop + distance * i)
+                    if(i>n){
+                        window.clearInterval(id)
+                    }
+                },duration)
                 
-
             }
         }
     </script>
