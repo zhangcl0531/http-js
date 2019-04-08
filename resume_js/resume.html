@@ -34,6 +34,7 @@
             justify-content: center;
             align-items: center;
         }
+
         .site-welcome.active {
             display: flex;
         }
@@ -236,17 +237,21 @@
             portfolioBar.className = 'bar state-3'
         }
     </script>
+
+    <!-- 使用tween.js来实现缓动效果 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+
     <script>
         //增加加载动画效果
-        setTimeout(function(){
+        setTimeout(function () {
             sitewelcome.classList.remove('active')
-        },1000)
-        
+        }, 1000)
+
         // 添加滚动鼠标可变化的topNavBar
-        window.onscroll = function(xxx){
-            if(window.scrollY > 0){
+        window.onscroll = function (xxx) {
+            if (window.scrollY > 0) {
                 topNavBar.classList.add('sticky')
-            }else{
+            } else {
                 topNavBar.classList.remove('sticky')
             }
         }
@@ -254,18 +259,18 @@
         //添加二级菜单
         let liTags = document.getElementsByClassName('menuTigger')
         // console.log(liTags)
-        for(let i=0; i<liTags.length; i++){
-            liTags[i].onmouseenter = function(x){
+        for (let i = 0; i < liTags.length; i++) {
+            liTags[i].onmouseenter = function (x) {
                 // console.log('mouseenter')
                 // console.log(x.currentTarget)
                 let li = x.currentTarget
                 let brother = li.getElementsByTagName('ul')[0]
                 // console.log(brother)
                 brother.classList.add('active')
-                
+
                 console.log(brother)
             }
-            liTags[i].onmouseleave = function(x){
+            liTags[i].onmouseleave = function (x) {
                 // console.log('mouseleave')
                 let li = x.currentTarget
                 let brother = li.getElementsByTagName('ul')[0]
@@ -274,17 +279,26 @@
             }
         }
 
+        
+
+        //缓动tween.js的函数
+        function animate(time) {
+            requestAnimationFrame(animate);
+            TWEEN.update(time);
+        }
+        requestAnimationFrame(animate);
+
         //点击链接跳转到指定标签
         let aTags = document.querySelectorAll('nav.menu > ul > li > a')
         console.log(aTags)
-        for(let i=0;i<aTags.length;i++){
-            aTags[i].onclick = function(x){
+        for (let i = 0; i < aTags.length; i++) {
+            aTags[i].onclick = function (x) {
                 x.preventDefault() //阻止默认事件
                 console.log('a clicked')
                 console.log(x)
                 console.log(x.currentTarget)
                 // let a = x.currentTarget
-                
+
                 // a.href 是被浏览器处理过的完整url连接，a.getAttribute('href')只是用户写入的#内容
                 // console.log(a.getAttribute('href'))
 
@@ -295,20 +309,41 @@
                 // window.scrollTo(0,top - 80)
 
                 //缓慢滚动到指定位置
-                let n = 25 // 一共动多少次
-                let duration = 500 / n //多少时间动一次，0.5秒移动到指定位置
+                // let n = 25 // 一共动多少次
+                // let duration = 500 / n //多少时间动一次，0.5秒移动到指定位置
+                // let currenTop = window.scrollY //当前高度
+                // let targetTop = top - 80 // 要去哪里
+                // let distance = (targetTop - currenTop) / n //每次滚动的距离
+                // let i = 0
+                // var id = setInterval(function () {
+                //     i = i + 1
+                //     window.scrollTo(0, currenTop + distance * i)
+                //     if (i > n) {
+                //         window.clearInterval(id)
+                //     }
+                // }, duration)
+
+                //使用tween.js实现缓动效果
+
                 let currenTop = window.scrollY //当前高度
                 let targetTop = top - 80 // 要去哪里
-                let distance = (targetTop - currenTop)/ n //每次滚动的距离
-                let i = 0
-                var id = setInterval(function(){
-                    i = i + 1
-                    window.scrollTo(0, currenTop + distance * i)
-                    if(i>n){
-                        window.clearInterval(id)
-                    }
-                },duration)
-                
+                let s = targetTop - currenTop //需要移动的距离
+                let t = Math.abs((s/100)*300) //计算需要移动的时间
+                if(t>500){t=500}
+                var coords = {
+                    y: currenTop
+                }; // Start at (0, 0)  开始移动的位置
+                var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                    .to({
+                        y: targetTop
+                    }, t) // Move to (300, 200) in 1 second. 需要移动到的位置，和时间
+                    .easing(TWEEN.Easing.Quadratic.InOut) // Use an easing function to make the animation smooth. 移动的动画效果
+                    .onUpdate(function () { // Called after tween.js updates 'coords'.
+                        // Move 'box' to the position described by 'coords' with a CSS translation.
+                        window.scrollTo(0, coords.y)
+                    })
+                    .start();
+
             }
         }
     </script>
