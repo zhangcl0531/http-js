@@ -50,7 +50,8 @@ body {
     
 } */
 
-.topNavBar nav ul li a:hover::after {
+.topNavBar nav ul li a:hover::after,
+.topNavBar nav ul li.highlight a::after {
     content: '';
     display: block;
     position: absolute;
@@ -420,4 +421,17 @@ main p a:hover {
 
 .submune.active a {
     color: black;
+}
+
+[data-x].active {
+    outline: 10px solid red;
+}
+
+[data-x].offset {
+    transform: translateY(100px);
+}
+
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
 }

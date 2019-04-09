@@ -82,7 +82,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div id="ABOUT" class="usercard">
+        <div data-x id="ABOUT" class="usercard">
             <div class="userinfobox clearfix">
                 <div class="picture">
                     <img src="./img/avatar.jpg" alt="头像">
@@ -149,7 +149,7 @@
         </p>
     </main>
 
-    <section id="SKILLS" class="skills">
+    <section data-x id="SKILLS" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -202,7 +202,7 @@
             </li>
         </ol>
     </section>
-    <section id="ALLDEMOS" class="portfolio">
+    <section data-x id="ALLDEMOS" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -245,7 +245,17 @@
         //增加加载动画效果
         setTimeout(function () {
             sitewelcome.classList.remove('active')
-        }, 1000)
+        }, 500)
+
+        // //添加滚动时标签向上缓动
+        let specialTags = document.querySelectorAll('[data-x]')
+        for (let i = 0; i < specialTags.length; i++) {
+            specialTags[i].classList.add('offset')
+        }
+        setTimeout(function(){
+            findClosest()
+        },501)
+        
 
         // 添加滚动鼠标可变化的topNavBar
         window.onscroll = function (xxx) {
@@ -254,7 +264,46 @@
             } else {
                 topNavBar.classList.remove('sticky')
             }
+
+            findClosest()
         }
+
+        function findClosest() {
+            //添加滚动高亮标签
+            let specialTags = document.querySelectorAll('[data-x]') //获取需要高亮对应的标签
+            console.log(specialTags)
+            let minIndex = 0 //先设定最靠近的标签是第一个0标签，和下一个1标签比目前页面滚动的距离
+            for (let i = 1; i < specialTags.length; i++) {
+                if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop -
+                        window.scrollY)) {
+                    minIndex = i
+                }
+            }
+
+            console.log(minIndex)
+
+            // for (let i = 0; i < specialTags.length; i++) {
+            //     specialTags[i].classList.remove('active')
+            // }
+            // specialTags[minIndex].classList.add('active')
+
+            //去掉offset
+            specialTags[minIndex].classList.remove('offset')
+
+            let id = specialTags[minIndex].id //获取最靠近标签的id
+            // console.log(id)
+            let a = document.querySelector('a[href="#' + id + '"]') //查找id对应的a标签
+            // console.log(a)
+            let li = a.parentNode // 查找a标签的上级li标签
+            // // console.log(li)
+            let brotherAndMe = li.parentNode.children
+            for (let i = 0; i < brotherAndMe.length; i++) {
+                brotherAndMe[i].classList.remove('highlight')
+            }
+
+            li.classList.add('highlight') //添加标签高亮
+        }
+
 
         //添加二级菜单
         let liTags = document.getElementsByClassName('menuTigger')
@@ -279,7 +328,7 @@
             }
         }
 
-        
+
 
         //缓动tween.js的函数
         function animate(time) {
@@ -328,8 +377,10 @@
                 let currenTop = window.scrollY //当前高度
                 let targetTop = top - 80 // 要去哪里
                 let s = targetTop - currenTop //需要移动的距离
-                let t = Math.abs((s/100)*300) //计算需要移动的时间
-                if(t>500){t=500}
+                let t = Math.abs((s / 100) * 300) //计算需要移动的时间
+                if (t > 500) {
+                    t = 500
+                }
                 var coords = {
                     y: currenTop
                 }; // Start at (0, 0)  开始移动的位置
@@ -337,7 +388,8 @@
                     .to({
                         y: targetTop
                     }, t) // Move to (300, 200) in 1 second. 需要移动到的位置，和时间
-                    .easing(TWEEN.Easing.Quadratic.InOut) // Use an easing function to make the animation smooth. 移动的动画效果
+                    .easing(TWEEN.Easing.Quadratic
+                        .InOut) // Use an easing function to make the animation smooth. 移动的动画效果
                     .onUpdate(function () { // Called after tween.js updates 'coords'.
                         // Move 'box' to the position described by 'coords' with a CSS translation.
                         window.scrollTo(0, coords.y)
