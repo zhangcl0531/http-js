@@ -309,9 +309,9 @@ main p a:hover {
 }
 
 /* 添加offset类时，技能条进度为0 */
-/* section.skills.offset .progress {
+section.skills.offset .progress {
     transform: translateX(-100%)
-} */
+}
 
 .portfolio {
     max-width: 940px;
