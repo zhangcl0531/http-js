@@ -19,11 +19,13 @@
 .images > img {
     width: 100%;
     transition: all 0.5s;
+    position: absolute;
+    top: 0;
 }
 
 
 
-.images > img:nth-child(1) {
+/* .images > img:nth-child(1) {
     position: absolute;
     top: 0;
     left: 0;
@@ -45,4 +47,28 @@
     position: absolute;
     top: 0;
     left: 100%;
+} */
+
+/* 显示状态 */
+.images > img.current {
+    left: 0;
+    transform: translateX(0);
+    z-index:1;
+    opacity: 1;
 }
+
+
+/* 离开状态 */
+.images > img.leave {
+    transform: translateX(-100%);
+    z-index:1;
+    opacity: 0;
+}
+
+
+/* 准备进入状态 */
+.images > img.enter {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
