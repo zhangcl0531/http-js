@@ -74,11 +74,15 @@
 // },8000)
 
 
-$('.images > img:nth-child(1)').addClass('current')
-$('.images > img:nth-child(2)').addClass('enter')
-$('.images > img:nth-child(3)').addClass('enter')
+
+
+
+
+// 获取有多少张轮播图
+allimg= $('.images > img').length
 
 let n = 1
+$(`.images > img:nth-child(${n})`).addClass('current').siblings().addClass('enter')
 
 setInterval(function () {
 
@@ -86,7 +90,7 @@ setInterval(function () {
         $(this).removeClass('leave').addClass('enter')
     })
 
-    if(n===3){
+    if(n===allimg){
         n = 0
     }
 
