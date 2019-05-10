@@ -79,22 +79,47 @@
 
 
 // 获取有多少张轮播图
-allimg= $('.images > img').length
+allimg = $('.images > img').length
 
 let n = 1
 $(`.images > img:nth-child(${n})`).addClass('current').siblings().addClass('enter')
 
-setInterval(function () {
+
+
+
+let timer = setInterval(function () {
 
     $(`.images > img:nth-child(${n})`).removeClass('current').addClass('leave').one('transitionend', function () {
         $(this).removeClass('leave').addClass('enter')
     })
 
-    if(n===allimg){
+    if (n === allimg) {
         n = 0
     }
 
     $(`.images > img:nth-child(${n+1})`).removeClass('enter').addClass('current')
 
-    n=n+1
-},2000)
+    n = n + 1
+}, 2000)
+
+// 当页面切开之后，暂停轮播
+document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+        window.clearInterval(timer)
+    } else {
+        let timer = setInterval(function () {
+
+            $(`.images > img:nth-child(${n})`).removeClass('current').addClass('leave').one('transitionend', function () {
+                $(this).removeClass('leave').addClass('enter')
+            })
+
+            if (n === allimg) {
+                n = 0
+            }
+
+            $(`.images > img:nth-child(${n+1})`).removeClass('enter').addClass('current')
+
+            n = n + 1
+        }, 2000)
+    }
+})
