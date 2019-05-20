@@ -318,6 +318,7 @@ section.skills.offset .progress {
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 
@@ -327,6 +328,7 @@ section.skills.offset .progress {
     font-size: 34px;
     line-height: 1.2;
     font-weight: 600;
+    margin-bottom: 60px;
 }
 
 

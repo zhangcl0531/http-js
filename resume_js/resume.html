@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="loading.css">
     <link rel="stylesheet" href="main.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     <script src="https://at.alicdn.com/t/font_1054675_krzsnyzfojl.js"></script>
     <style type="text/css">
         .icon {
@@ -37,6 +37,31 @@
 
         .site-welcome.active {
             display: flex;
+        }
+
+        .swiper-container {
+            width: 888px;
+            height: 666px;
+
+        }
+
+        .swiper-button-prev{
+            background-color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            right: 100%;
+            left: auto;
+            opacity: 0.9;
+        }
+        .swiper-button-next {
+            background-color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            left: 100%;
+            right: auto;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -204,7 +229,7 @@
     </section>
     <section data-x id="ALLDEMOS" class="portfolio">
         <h2>作品集</h2>
-        <nav>
+        <!-- <nav>
             <ol class="clearfix">
                 <li id="portfolio1">所有</li>
                 <li id="portfolio2">框架</li>
@@ -213,8 +238,8 @@
             <div id="portfolioBar" class="bar state-1">
                 <div class="bar-inner"></div>
             </div>
-        </nav>
-        <div class="works" style="height: 597px;">
+        </nav> -->
+        <!-- <div class="works" style="height: 597px;">
             <div class="big" style="top: 0; left: 0;">
                 <img src="./img/1.jpg" alt="作品1">
             </div>
@@ -224,9 +249,27 @@
             <div class="small" style="top: 312px; left: 645px;">
                 <img src="./img/3.jpg" alt="作品3">
             </div>
+        </div> -->
+        <!-- 轮播 -->
+        <!-- Slider main container -->
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <img class="swiper-slide" src="./img/start.png">
+                <img class="swiper-slide" src="./img/canvas.png">
+                <img class="swiper-slide" src="./img/start.png">
+                <img class="swiper-slide" src="./img/canvas.png">
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
         </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </section>
-    <script>
+    <!-- <script>
         portfolio1.onclick = function () {
             portfolioBar.className = 'bar state-1'
         }
@@ -236,10 +279,37 @@
         portfolio3.onclick = function () {
             portfolioBar.className = 'bar state-3'
         }
-    </script>
+    </script> -->
+
+
+
+
 
     <!-- 使用tween.js来实现缓动效果 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+    <!-- 轮播的js -->
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // Optional parameters
+
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+        })
+    </script>
+
 
     <script>
         //增加加载动画效果
@@ -252,10 +322,10 @@
         for (let i = 0; i < specialTags.length; i++) {
             specialTags[i].classList.add('offset')
         }
-        setTimeout(function(){
+        setTimeout(function () {
             findClosest()
-        },501)
-        
+        }, 501)
+
 
         // 添加滚动鼠标可变化的topNavBar
         window.onscroll = function (xxx) {
