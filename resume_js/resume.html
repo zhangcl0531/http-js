@@ -97,8 +97,8 @@
                     </ul>
                 </li>
                 <li><a href="#CONTACT">CONTACT</a></li>
-                <li><a href="#OTHER">OTHER</a></li>
                 <li><a href="#ALLDEMOS">ALL DEMOS</a></li>
+                <li><a href="#MESSAGE">MESSAGE</a></li>
             </ul>
         </nav>
 
@@ -280,15 +280,25 @@
             portfolioBar.className = 'bar state-3'
         }
     </script> -->
-
+    <section data-x id="MESSAGE" class="message">
+        <h2>留言板</h2>
+        <form action="" id="postmessage">
+            <input type="text" name="content" id="">
+            <input type="submit" value="提交">
+        </form>
+        <ol id="messagelist"></ol>
+    </section>
 
 
 
 
     <!-- 使用tween.js来实现缓动效果 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    <!-- 使用swiper.js来实现轮播效果 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
-
+    <!-- 使用av-min.js来实现数据存储留言板功能 -->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js"></script>
+    <script src="./js/leancloud.js"></script>
     <!-- 轮播的js -->
     <script>
         var mySwiper = new Swiper('.swiper-container', {
@@ -365,7 +375,7 @@
             let a = document.querySelector('a[href="#' + id + '"]') //查找id对应的a标签
             // console.log(a)
             let li = a.parentNode // 查找a标签的上级li标签
-            // // console.log(li)
+            // console.log(li)
             let brotherAndMe = li.parentNode.children
             for (let i = 0; i < brotherAndMe.length; i++) {
                 brotherAndMe[i].classList.remove('highlight')
