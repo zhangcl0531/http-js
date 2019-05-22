@@ -465,3 +465,17 @@ section.skills.offset .progress {
     font-weight: 600;
     margin-bottom: 60px;
 }
+
+#messagelist {
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
+}
+
+#messagelist > li {
+    padding: 16px;
+    margin-top: 10px;
+    border-bottom: 1px solid #efefef;
+    border-bottom-style: dashed;
+}
